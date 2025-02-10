@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
+import { Toaster } from "sonner";
+import Providers from "./Providers";
 
 export const metadata: Metadata = {
   title: "Sajjad's Portfolio",
@@ -13,11 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light">
-      <body>
-        <Navbar  />
-        <div className="min-h-screen container mx-auto">{children}</div>
-      </body>
-    </html>
+    <Providers>
+      <html lang="en" data-theme="light">
+        <body>
+          <Navbar />
+          <div className="min-h-screen container mx-auto">{children}</div>
+          <Toaster position="top-right" />
+        </body>
+      </html>
+    </Providers>
   );
 }
