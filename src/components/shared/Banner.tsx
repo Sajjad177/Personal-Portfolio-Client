@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { Download } from "lucide-react";
 import "../style/button.css";
@@ -7,7 +8,7 @@ const Banner = () => {
   return (
     <div>
       <div className="relative font-space">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-10 lg:pt-20">
+        <div className="mx-auto max-w-7xl lg:px-8 mt-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             {/* Left Column */}
             <div className="flex flex-col justify-center">
@@ -40,7 +41,7 @@ const Banner = () => {
             </div>
 
             {/* Right Column */}
-            <div className="relative h-[400px] lg:h-[500px]">
+            <div className="relative">
               <Image
                 src={profile}
                 alt="profile"
