@@ -33,7 +33,7 @@ const Navbar = () => {
               </li>
               <li className="relative group">
                 <Link
-                  href="/project"
+                  href="/projects"
                   className="px-4 py-2 hover:text-blue-600 transition-colors duration-300"
                 >
                   Projects
