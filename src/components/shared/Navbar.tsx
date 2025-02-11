@@ -49,6 +49,15 @@ const Navbar = () => {
                   <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-600 group-hover:w-full transition-all duration-300"></span>
                 </Link>
               </li>
+              <li className="relative group">
+                <Link
+                  href="/contact"
+                  className="px-4 py-2 hover:text-blue-600 transition-colors duration-300"
+                >
+                  Contact
+                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -175,6 +184,14 @@ const Navbar = () => {
                 className="block px-4 py-3 hover:bg-blue-50 rounded-lg transition-colors font-medium"
               >
                 Blogs
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact"
+                className="block px-4 py-3 hover:bg-blue-50 rounded-lg transition-colors font-medium"
+              >
+                Contact
               </Link>
             </li>
           </ul>
