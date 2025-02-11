@@ -42,7 +42,7 @@ const Navbar = () => {
               </li>
               <li className="relative group">
                 <Link
-                  href="/support"
+                  href="/blogs"
                   className="px-4 py-2 hover:text-blue-600 transition-colors duration-300"
                 >
                   Blogs
@@ -163,7 +163,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                href="/project"
+                href="/projects"
                 className="block px-4 py-3 hover:bg-blue-50 rounded-lg transition-colors font-medium"
               >
                 Projects
@@ -171,7 +171,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                href="/support"
+                href="/blogs"
                 className="block px-4 py-3 hover:bg-blue-50 rounded-lg transition-colors font-medium"
               >
                 Blogs
