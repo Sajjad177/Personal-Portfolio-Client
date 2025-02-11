@@ -17,7 +17,6 @@ export type FormValues = {
 
 const ContactPage = () => {
   const currentUser = useSelector(selectCurrentUser);
-//   console.log(currentUser);
   const [sendMessage] = useSendMessageMutation();
 
   const {
