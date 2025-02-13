@@ -7,15 +7,45 @@ const projectManagement = baseApi.injectEndpoints({
         url: "/project",
         method: "GET",
       }),
+      providesTags: ["Project"],
     }),
     getSingleProject: builder.query({
       query: (id) => ({
         url: `/project/${id}`,
         method: "GET",
       }),
+      providesTags: ["Project"],
+    }),
+    updateProject: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/project/update/${id}`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["Project"],
+    }),
+    deleteProject: builder.mutation({
+      query: (id) => ({
+        url: `/project/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Project"],
+    }),
+    createProject: builder.mutation({
+      query: (data) => ({
+        url: "/project/create",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Project"],
     }),
   }),
 });
 
-export const { useGetAllProjectsQuery, useGetSingleProjectQuery } =
-  projectManagement;
+export const {
+  useGetAllProjectsQuery,
+  useGetSingleProjectQuery,
+  useCreateProjectMutation,
+  useUpdateProjectMutation,
+  useDeleteProjectMutation,
+} = projectManagement;

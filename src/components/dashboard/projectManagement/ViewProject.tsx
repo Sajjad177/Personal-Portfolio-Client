@@ -9,7 +9,7 @@ import { MdDeleteOutline } from "react-icons/md";
 const ViewProject = () => {
   const { data } = useGetAllProjectsQuery(undefined);
   const projectData = data?.data || [];
-  console.log(projectData);
+  // console.log(projectData);
 
   const handleDelete = async (id: string) => {
     console.log(id);
