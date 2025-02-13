@@ -1,18 +1,32 @@
 "use client";
 
-import { useGetAllProjectsQuery } from "@/redux/features/projects/projectsManagement";
+import {
+  useDeleteProjectMutation,
+  useGetAllProjectsQuery,
+} from "@/redux/features/projects/projectsManagement";
 import Image from "next/image";
 import Link from "next/link";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
+import { toast } from "sonner";
 
 const ViewProject = () => {
   const { data } = useGetAllProjectsQuery(undefined);
   const projectData = data?.data || [];
-  // console.log(projectData);
+  const [deleteProject] = useDeleteProjectMutation();
 
   const handleDelete = async (id: string) => {
-    console.log(id);
+    try {
+      const res = await deleteProject(id).unwrap();
+      if (res?.success) {
+        toast.success(res.message || "Project deleted successfully");
+      } else {
+        toast.error(res.message || "Failed to delete project");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
   };
 
   return (
