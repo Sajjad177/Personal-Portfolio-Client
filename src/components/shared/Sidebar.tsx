@@ -6,7 +6,6 @@ import { GoProjectTemplate } from "react-icons/go";
 import { FaBloggerB } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
 
-// Define props for NavItem
 interface NavItemProps {
   href: string;
   icon: JSX.Element;
@@ -21,8 +20,8 @@ const Sidebar: React.FC = () => {
     <div className="flex">
       {/* Sidebar */}
       <aside
-        className={`bg-white shadow-md h-screen fixed top-0 left-0 transition-all duration-300 ${
-          isOpen ? "w-64" : "w-20"
+        className={`bg-white shadow-md min-h-screen fixed top-0 left-0 transition-all duration-300 ${
+          isOpen ? "w-48" : "w-20"
         } overflow-hidden`}
       >
         {/* Toggle Button */}
