@@ -46,9 +46,7 @@ const ViewMessage = () => {
 
             {/* Footer */}
             <div className="flex justify-between items-center mt-4">
-              {/* {message.unread && (
-                <span className="w-2 h-2 bg-red-500 rounded-full"></span>
-              )} */}
+              
               <button
                 className="flex items-center gap-2 text-red-500 hover:text-red-700 transition-all"
                 onClick={() => handleDelete(message._id)}
