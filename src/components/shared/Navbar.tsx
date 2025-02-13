@@ -1,14 +1,21 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
-import { logOut, selectCurrentUser,  } from "@/redux/features/auth/authSlice";
+import { logOut, selectCurrentUser } from "@/redux/features/auth/authSlice";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const isAdmin = currentUser?.role === "admin";
+
+  useEffect(() => {
+    setMounted(true); 
+  }, []);
+
+  if (!mounted) return null;
 
   const handleLogout = () => {
     dispatch(logOut());
@@ -56,7 +63,6 @@ const Navbar = () => {
 
           {/* Right Section */}
           <div className="flex items-center gap-4">
-            {/* Auth Buttons */}
             <div className="hidden md:flex items-center gap-3">
               {isAdmin && (
                 <Link
@@ -89,34 +95,33 @@ const Navbar = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
               >
-                <svg
-                  className={`${
-                    isOpen ? "hidden" : "block"
-                  } h-6 w-6 text-gray-600`}
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-                <svg
-                  className={`${
-                    isOpen ? "block" : "hidden"
-                  } h-6 w-6 text-gray-600`}
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                {isOpen ? (
+                  <svg
+                    className="h-6 w-6 text-gray-600"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    className="h-6 w-6 text-gray-600"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                )}
               </button>
             </div>
           </div>
