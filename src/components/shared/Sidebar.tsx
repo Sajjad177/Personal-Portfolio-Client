@@ -42,25 +42,25 @@ const Sidebar: React.FC = () => {
             <NavItem href="/" icon={<FiHome />} label="Home" isOpen={isOpen} />
 
             <NavItem
-              href="/sessions"
+              href="/dashboard/message"
               icon={<MdMessage />}
               label="Messages"
               isOpen={isOpen}
             />
             <NavItem
-              href="/users"
+              href="/dashboard/users"
               icon={<FiUsers />}
               label="Users"
               isOpen={isOpen}
             />
             <NavItem
-              href="/organisations"
+              href="/dashboard/projects"
               icon={<GoProjectTemplate />}
               label="Projects"
               isOpen={isOpen}
             />
             <NavItem
-              href="/auth"
+              href="/dashboard/blogs"
               icon={<FaBloggerB />}
               label="Blogs"
               isOpen={isOpen}
