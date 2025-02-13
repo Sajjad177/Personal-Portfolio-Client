@@ -1,17 +1,31 @@
 "use client";
-import { useGetAllBlogsQuery } from "@/redux/features/blogs/blogManagement";
+import {
+  useDeleteBlogMutation,
+  useGetAllBlogsQuery,
+} from "@/redux/features/blogs/blogManagement";
 import Image from "next/image";
 import Link from "next/link";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
+import { toast } from "sonner";
 
 const ViewBlog = () => {
   const { data } = useGetAllBlogsQuery(undefined);
   const blogData = data?.data || [];
+  const [deleteBlog] = useDeleteBlogMutation();
 
-  const handleDelete = (id) => {
-    console.log("Delete blog with ID:", id);
-    // You can implement the delete functionality here
+  const handleDelete = async (id: string) => {
+    try {
+      const res = await deleteBlog(id).unwrap();
+      if (res?.success) {
+        toast.success(res.message || "Blog deleted successfully");
+      } else {
+        toast.error(res.message || "Failed to delete blog");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
   };
 
   return (
