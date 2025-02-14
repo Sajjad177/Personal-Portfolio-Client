@@ -1,9 +1,11 @@
+import ViewInDashboard from "@/components/dashboard/ViewInDashboard";
+
 
 const DashboardPage = () => {
     return (
-        <div className="text-2xl">
-            this is dashboard
-        </div>
+      <div>
+        <ViewInDashboard />
+      </div>
     );
 };
 

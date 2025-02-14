@@ -1,7 +1,7 @@
 "use client";
 import { JSX, useState } from "react";
 import Link from "next/link";
-import { FiHome, FiUsers, FiChevronRight } from "react-icons/fi";
+import { FiHome, FiChevronRight } from "react-icons/fi";
 import { GoProjectTemplate } from "react-icons/go";
 import { FaBloggerB } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
@@ -46,12 +46,12 @@ const Sidebar: React.FC = () => {
               label="Messages"
               isOpen={isOpen}
             />
-            <NavItem
+            {/* <NavItem
               href="/dashboard/users"
               icon={<FiUsers />}
               label="Users"
               isOpen={isOpen}
-            />
+            /> */}
             <NavItem
               href="/dashboard/projects"
               icon={<GoProjectTemplate />}
