@@ -1,113 +1,128 @@
 "use client";
 
 import { useGetSingleProjectQuery } from "@/redux/features/projects/projectsManagement";
-import Image from "next/image";
 import { useParams } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const ProjectDetails = () => {
   const { id } = useParams();
   const { data } = useGetSingleProjectQuery(id);
   const projectData = data?.data || {};
 
-  // Check if the image URL exists and is not empty
+  // Check if the image URL exists
   const imageUrl =
     projectData.image && projectData.image !== "" ? projectData.image : null;
 
   return (
-    <div className="max-w-7xl mx-auto p-6 font-space">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {/* Left section: Image */}
-        <div className="flex justify-center items-center shadow-lg rounded-xl overflow-hidden">
-          {imageUrl ? (
-            <Image
-              src={imageUrl}
-              alt={projectData.title}
-              className="w-full h-full object-cover rounded-lg transition-transform duration-500 hover:scale-105"
-              width={600} // Specify width to avoid layout shift
-              height={400} // Specify height to avoid layout shift
-            />
-          ) : (
-            <div className="w-full h-96 bg-gray-300 rounded-lg flex justify-center items-center text-gray-600">
-              No Image Available
-            </div>
-          )}
-        </div>
+    <div className="max-w-7xl mx-auto px-6 py-12 font-space">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        {/* Project Image Section */}
+        <Card className="rounded-xl overflow-hidden ">
+          <div className="relative w-full h-64 md:h-80 lg:h-96">
+            {imageUrl ? (
+              <Image
+                src={imageUrl}
+                alt={projectData.title}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg transition-transform duration-500 hover:scale-105"
+              />
+            ) : (
+              <div className="w-full h-full bg-gray-300 dark:bg-gray-700 flex justify-center items-center text-gray-600">
+                No Image Available
+              </div>
+            )}
+          </div>
+        </Card>
 
-        {/* Right section: Project details */}
-        <div className="space-y-8">
-          {/* Title */}
-          <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight mb-4">
-            {projectData.title}
-          </h1>
+        {/* Project Details Section */}
+        <Card className="shadow-md dark:shadow-lg">
+          <CardContent className="p-6 space-y-6">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white">
+              {projectData.title}
+            </h1>
 
-          {/* Description */}
-          <p className="text-lg text-gray-700 leading-relaxed">
-            {projectData.description}
-          </p>
+            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              {projectData.description}
+            </p>
 
-          {/* Tech stack */}
-          <div className="space-y-4">
-            <div>
-              <h2 className="text-2xl font-semibold text-gray-800">
-                Backend Technologies:
-              </h2>
-              <div className="flex flex-wrap gap-4 mt-2">
-                {projectData.backendTech?.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="bg-blue-100 text-blue-800 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 hover:bg-blue-200"
-                  >
-                    {tech}
-                  </span>
-                ))}
+            {/* Tech Stack */}
+            <div className="space-y-4">
+              <div>
+                <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                  Backend Technologies:
+                </h2>
+                <div className="flex flex-wrap gap-3 mt-2">
+                  {projectData.backendTech?.map(
+                    (tech: string, index: number) => (
+                      <Badge
+                        key={index}
+                        className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-4 py-1 text-sm"
+                      >
+                        {tech}
+                      </Badge>
+                    )
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                  Frontend Technologies:
+                </h2>
+                <div className="flex flex-wrap gap-3 mt-2">
+                  {projectData.frontendTech?.map(
+                    (tech: string, index: number) => (
+                      <Badge
+                        key={index}
+                        className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 px-4 py-1 text-sm"
+                      >
+                        {tech}
+                      </Badge>
+                    )
+                  )}
+                </div>
               </div>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-semibold text-gray-800 mt-6">
-                Frontend Technologies:
-              </h2>
-              <div className="flex flex-wrap gap-4 mt-2">
-                {projectData.frontendTech?.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="bg-green-100 text-green-800 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 hover:bg-green-200"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+            {/* Project Links */}
+            <div className="flex flex-wrap gap-4">
+              {projectData.liveLink && (
+                <Link
+                  href={projectData.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className="bg-blue-600 hover:bg-blue-700">
+                    Live Project
+                  </Button>
+                </Link>
+              )}
+              {projectData.gitClientLink && (
+                <Link
+                  href={projectData.gitClientLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="secondary">Client GitHub</Button>
+                </Link>
+              )}
+              {projectData.gitServerLink && (
+                <Link
+                  href={projectData.gitServerLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="secondary">Server GitHub</Button>
+                </Link>
+              )}
             </div>
-          </div>
-
-          {/* Links */}
-          <div className="flex gap-6 mt-8">
-            <a
-              href={projectData.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold text-lg rounded-lg shadow-md transition-transform duration-300 hover:bg-blue-700 hover:scale-105"
-            >
-              View Live Project
-            </a>
-            <a
-              href={projectData.gitClientLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-gray-800 text-white font-semibold text-lg rounded-lg shadow-md transition-transform duration-300 hover:bg-gray-900 hover:scale-105"
-            >
-              Client GitHub
-            </a>
-            <a
-              href={projectData.gitServerLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-gray-800 text-white font-semibold text-lg rounded-lg shadow-md transition-transform duration-300 hover:bg-gray-900 hover:scale-105"
-            >
-              Server GitHub
-            </a>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
