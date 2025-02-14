@@ -41,13 +41,13 @@ const Skills = () => {
     <div>
       <section className="py-16 font-space ">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          <h2 className="text-3xl font-bold text-center mb-12 dark:text-white text-gray-800">
             My Skills
           </h2>
 
           {/* Frontend Skills */}
-          <h3 className="text-2xl font-semibold text-gray-700 mb-4">
-            Frontend Skills
+          <h3 className="text-2xl font-semibold dark:text-white text-gray-700 mb-4">
+            Frontend Skills:
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
             {frontendSkills.map((skill) => (
@@ -56,8 +56,8 @@ const Skills = () => {
           </div>
 
           {/* Backend Skills */}
-          <h3 className="text-2xl font-semibold text-gray-700 mb-4">
-            Backend Skills
+          <h3 className="text-2xl font-semibold dark:text-white text-gray-700 mb-4">
+            Backend Skills:
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {backendSkills.map((skill) => (

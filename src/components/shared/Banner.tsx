@@ -16,7 +16,7 @@ const Banner = () => {
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-2">
                 {"I'm"}
               </h1>
-              <h2 className="text-5xl sm:text-6xl lg:text-6xl font-bold leading-tight text-transparent [-webkit-text-stroke:1px_black] mb-4">
+              <h2 className="text-5xl sm:text-6xl dark:text-white lg:text-6xl font-bold leading-tight text-transparent [-webkit-text-stroke:1px_black] mb-4">
                 Sajjad Hossain
               </h2>
               <p className="text-lg mb-8">
