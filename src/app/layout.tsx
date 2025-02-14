@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "sonner";
 import Providers from "./Providers";
+import { ThemeProvider } from "@/components/Providers/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Sajjad's Portfolio",
@@ -15,9 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <Providers>
-      <html lang="en" data-theme="light">
+      <html lang="en">
         <body>
-          <div>{children}</div>
+          <ThemeProvider attribute="class" defaultTheme="system">
+            {children}
+          </ThemeProvider>
           <Toaster position="top-right" />
         </body>
       </html>
