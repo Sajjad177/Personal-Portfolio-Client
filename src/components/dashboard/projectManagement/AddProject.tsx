@@ -96,14 +96,13 @@ const AddProject = () => {
 
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75 z-50">
-          <div className="relative bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+          <div className="relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg">
             <button
               onClick={() => setIsOpen(false)}
               className="absolute text-3xl top-2 right-2 text-gray-500 hover:text-gray-700"
             >
               &times;
             </button>
-
             <h1 className="text-2xl font-bold text-center mb-6">Add Project</h1>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
@@ -111,7 +110,7 @@ const AddProject = () => {
                 type="text"
                 {...register("title", { required: "Title is required" })}
                 placeholder="Title"
-                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600"
               />
               {errors.title && (
                 <span className="text-red-500 text-sm">
@@ -124,7 +123,7 @@ const AddProject = () => {
                   required: "Description is required",
                 })}
                 placeholder="Description"
-                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600"
               />
               {errors.description && (
                 <span className="text-red-500 text-sm">
@@ -137,7 +136,7 @@ const AddProject = () => {
                 value={backendTech.join(", ")}
                 onChange={handleBackendTechChange}
                 placeholder="Backend Technologies (comma-separated)"
-                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600"
               />
               {errors.backendTech && (
                 <span className="text-red-500 text-sm">
@@ -150,7 +149,7 @@ const AddProject = () => {
                 value={frontendTech.join(", ")}
                 onChange={handleFrontendTechChange}
                 placeholder="Frontend Technologies (comma-separated)"
-                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600"
               />
               {errors.frontendTech && (
                 <span className="text-red-500 text-sm">
@@ -162,7 +161,7 @@ const AddProject = () => {
                 type="text"
                 {...register("liveLink", { required: "Live Link is required" })}
                 placeholder="Live Link"
-                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600"
               />
               {errors.liveLink && (
                 <span className="text-red-500 text-sm">
@@ -176,7 +175,7 @@ const AddProject = () => {
                   required: "Git Client Link is required",
                 })}
                 placeholder="Git Client Link"
-                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600"
               />
               <input
                 type="text"
@@ -184,13 +183,13 @@ const AddProject = () => {
                   required: "Git Server Link is required",
                 })}
                 placeholder="Git Server Link"
-                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600"
               />
 
               <input
                 type="file"
                 accept="image/*"
-                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                className="w-full p-3 rounded-md coursor-pointer"
                 {...register("image")}
                 onChange={handleImagePreview}
               />

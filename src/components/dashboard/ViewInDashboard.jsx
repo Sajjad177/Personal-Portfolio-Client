@@ -34,7 +34,7 @@ const ViewInDashboard = () => {
   ];
 
   return (
-    <div className="container mx-auto p-6 space-y-8">
+    <div className="container mx-auto p-6 space-y-8 font-space">
       {/* Progress Section */}
       <div>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">

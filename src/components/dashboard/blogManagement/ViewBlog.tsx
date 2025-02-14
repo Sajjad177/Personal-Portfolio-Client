@@ -31,8 +31,8 @@ const ViewBlog = () => {
   return (
     <div className="container mx-auto px-4 py-6 font-space mt-20">
       <div className="overflow-x-auto">
-        <table className="min-w-full table-auto bg-white shadow-md rounded-lg">
-          <thead className="bg-gray-100">
+        <table className="min-w-full table-auto bg-white dark:bg-gray-800 shadow-md rounded-lg">
+          <thead className="bg-gray-100 dark:bg-gray-700">
             <tr>
               <th className="px-4 py-2 text-left text-lg text-gray-700 font-semibold">
                 Image
@@ -63,13 +63,13 @@ const ViewBlog = () => {
                     className="w-12 h-12 object-cover rounded-full"
                   />
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-700">
+                <td className="px-4 py-2 text-sm text-gray-700 dark:text-white">
                   {blog.title}
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-700">
+                <td className="px-4 py-2 text-sm text-gray-700 dark:text-white">
                   {blog.category}
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-700">
+                <td className="px-4 py-2 text-sm text-gray-700 dark:text-white">
                   {new Date(blog.createdAt).toLocaleString()}
                 </td>
                 <td className="px-4 py-2 text-sm text-gray-700 flex gap-3">

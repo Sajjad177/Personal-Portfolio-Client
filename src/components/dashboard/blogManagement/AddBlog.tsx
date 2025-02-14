@@ -76,7 +76,7 @@ const AddBlog = () => {
       {/* Modal */}
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75 z-50">
-          <div className="relative bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+          <div className="relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg">
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
@@ -90,13 +90,13 @@ const AddBlog = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* Title Field */}
               <div>
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
                   Title
                 </label>
                 <input
                   type="text"
                   {...register("title", { required: "Title is required" })}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                  className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600"
                 />
                 {errors.title && (
                   <span className="text-red-500 text-sm">
@@ -107,13 +107,13 @@ const AddBlog = () => {
 
               {/* Content Field */}
               <div>
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
                   Content
                 </label>
                 <textarea
                   rows={4}
                   {...register("content", { required: "Content is required" })}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
                 />
                 {errors.content && (
                   <span className="text-red-500 text-sm">
@@ -131,7 +131,7 @@ const AddBlog = () => {
                   {...register("category", {
                     required: "Category is required",
                   })}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
                 >
                   <option value="">Select a category</option>
                   <option value="tech">Tech</option>
@@ -154,7 +154,7 @@ const AddBlog = () => {
                 <input
                   type="file"
                   accept="image/*"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                  className="w-full p-3 "
                   {...register("image")}
                   onChange={handleImagePreview}
                 />

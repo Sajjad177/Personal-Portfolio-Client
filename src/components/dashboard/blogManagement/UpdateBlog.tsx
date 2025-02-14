@@ -83,21 +83,21 @@ const UpdateBlog = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg font-space mt-20 border">
-      <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+    <div className="max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg font-space mt-20 border">
+      <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">
         Update Blog
       </h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Title Field */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white">
             Title
           </label>
           <input
             type="text"
             {...register("title", { required: "Title is required" })}
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
           />
           {errors.title && (
             <span className="text-red-500 text-sm">{errors.title.message}</span>
@@ -106,13 +106,13 @@ const UpdateBlog = () => {
 
         {/* Content Field */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white">
             Content
           </label>
           <textarea
             rows={6}
             {...register("content", { required: "Content is required" })}
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
           />
           {errors.content && (
             <span className="text-red-500 text-sm">
@@ -123,12 +123,12 @@ const UpdateBlog = () => {
 
         {/* Category Field */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white">
             Category
           </label>
           <select
             {...register("category", { required: "Category is required" })}
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
           >
             <option value="">Select a category</option>
             <option value="tech">Tech</option>
@@ -145,13 +145,13 @@ const UpdateBlog = () => {
 
         {/* Image Upload Field */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white">
             Upload Image
           </label>
           <input
             type="file"
             accept="image/*"
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 "
             onChange={handleImagePreview}
           />
         </div>

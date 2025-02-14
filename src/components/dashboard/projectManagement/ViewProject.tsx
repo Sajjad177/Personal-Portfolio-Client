@@ -32,9 +32,9 @@ const ViewProject = () => {
   return (
     <div className="container mx-auto px-4 py-6 mt-20">
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white shadow-md rounded-lg border border-gray-200">
-          <thead className="bg-gray-100">
-            <tr className="text-gray-700">
+        <table className="min-w-full bg-white shadow-md rounded-lg border border-gray-200 dark:border-gray-700">
+          <thead className="bg-gray-100 dark:bg-gray-700">
+            <tr className="text-gray-700 dark:text-white">
               <th className="px-4 py-3 text-left text-lg font-semibold">
                 Image
               </th>
@@ -59,9 +59,9 @@ const ViewProject = () => {
             </tr>
           </thead>
 
-          <tbody>
+          <tbody className="bg-white dark:bg-gray-800">
             {projectData.map((project: any) => (
-              <tr key={project._id} className="border-b">
+              <tr key={project._id} className="border-b dark:border-gray-700">
                 {/* ✅ Image */}
                 <td className="px-4 py-3">
                   {project.image ? (
@@ -73,17 +73,19 @@ const ViewProject = () => {
                       className="w-16 h-16 object-cover rounded-md"
                     />
                   ) : (
-                    <span className="text-gray-400">No Image</span>
+                    <span className="text-gray-400 dark:text-white">
+                      No Image
+                    </span>
                   )}
                 </td>
 
                 {/* ✅ Title */}
-                <td className="px-4 py-3 text-sm font-semibold">
+                <td className="px-4 py-3 text-sm font-semibold dark:text-white">
                   {project.title}
                 </td>
 
                 {/* ✅ Description */}
-                <td className="px-4 py-3 text-sm text-gray-700 max-w-xs truncate">
+                <td className="px-4 py-3 text-sm text-gray-700 dark:text-white max-w-xs truncate">
                   {project.description || "No description available"}
                 </td>
 

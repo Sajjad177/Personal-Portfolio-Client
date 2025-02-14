@@ -45,26 +45,26 @@ const LoginPage = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen font-space">
-      <div className="bg-white shadow-xl rounded-lg p-8 max-w-md w-full ">
-        <h2 className="text-2xl font-bold text-center text-gray-700">Login</h2>
+      <div className="bg-white dark:bg-gray-800 shadow-xl rounded-lg p-8 max-w-md w-full ">
+        <h2 className="text-2xl font-bold text-center text-gray-700 dark:text-white mb-6">Login</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
-            <label className="block text-gray-600">Email</label>
+            <label className="block text-gray-600 dark:text-white">Email</label>
             <input
               type="email"
               {...register("email")}
-              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
             />
             {errors.email && (
               <p className="text-red-500">{errors.email.message}</p>
             )}
           </div>
           <div className="mb-4">
-            <label className="block text-gray-600">Password</label>
+            <label className="block text-gray-600 dark:text-white">Password</label>
             <input
               type="password"
               {...register("password")}
-              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
             />
             {errors.email && (
               <p className="text-red-500">{errors.email.message}</p>

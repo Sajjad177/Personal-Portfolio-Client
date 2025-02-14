@@ -27,7 +27,6 @@ const UpdateProject = () => {
 
   const { data } = useGetSingleProjectQuery(projectId);
   const projectData = data?.data || {};
-
   const [updateProject] = useUpdateProjectMutation();
 
   const router = useRouter();
@@ -87,18 +86,18 @@ const UpdateProject = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-md mt-3 border">
+    <div className="max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 shadow-md rounded-md mt-3 border font-space">
       <h1 className="text-2xl font-bold text-center mb-6">Update Project</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white">
             Title
           </label>
           <input
             type="text"
             {...register("title", { required: "Title is required" })}
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
           />
           {errors.title && (
             <span className="text-red-500 text-sm">{errors.title.message}</span>
@@ -106,7 +105,7 @@ const UpdateProject = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white">
             Description
           </label>
           <textarea
@@ -114,7 +113,7 @@ const UpdateProject = () => {
             {...register("description", {
               required: "Description is required",
             })}
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
           />
           {errors.description && (
             <span className="text-red-500 text-sm">
@@ -124,7 +123,7 @@ const UpdateProject = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white">
             Backend Technologies (comma-separated)
           </label>
           <input
@@ -132,7 +131,7 @@ const UpdateProject = () => {
             {...register("backendTech", {
               required: "Backend technologies are required",
             })}
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
           />
           {errors.backendTech && (
             <span className="text-red-500 text-sm">
@@ -142,7 +141,7 @@ const UpdateProject = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white">
             Frontend Technologies (comma-separated)
           </label>
           <input
@@ -150,7 +149,7 @@ const UpdateProject = () => {
             {...register("frontendTech", {
               required: "Frontend technologies are required",
             })}
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
           />
           {errors.frontendTech && (
             <span className="text-red-500 text-sm">
@@ -160,13 +159,13 @@ const UpdateProject = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white">
             Live Link
           </label>
           <input
             type="text"
             {...register("liveLink", { required: "Live link is required" })}
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
           />
           {errors.liveLink && (
             <span className="text-red-500 text-sm">
@@ -176,7 +175,7 @@ const UpdateProject = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white">
             Git Client Link
           </label>
           <input
@@ -184,12 +183,12 @@ const UpdateProject = () => {
             {...register("gitClientLink", {
               required: "Git client link is required",
             })}
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white">
             Git Server Link
           </label>
           <input
@@ -197,18 +196,18 @@ const UpdateProject = () => {
             {...register("gitServerLink", {
               required: "Git server link is required",
             })}
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white">
             Upload Image
           </label>
           <input
             type="file"
             accept="image/*"
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 "
             {...register("image")}
             onChange={handleImagePreview}
           />

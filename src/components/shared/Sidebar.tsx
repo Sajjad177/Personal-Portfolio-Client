@@ -20,13 +20,13 @@ const Sidebar: React.FC = () => {
     <div className="flex">
       {/* Sidebar */}
       <aside
-        className={`bg-white shadow-md min-h-screen fixed top-0 left-0 transition-all duration-300 ${
+        className={`bg-white dark:bg-gray-800 dark:text-white shadow-md min-h-screen fixed top-0 left-0 transition-all duration-300 ease-in-out ${
           isOpen ? "w-48" : "w-20"
-        } overflow-hidden`}
+        } overflow-hidden border-r dark:border-gray-700 border-gray-300 z-10`}
       >
         {/* Toggle Button */}
         <button
-          className="p-2 absolute right-[-1px] top-4 bg-gray-200 rounded-full shadow-md transition-transform"
+          className="p-2 absolute right-[-1px] top-4 bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-transform"
           onClick={() => setIsOpen(!isOpen)}
         >
           <FiChevronRight
@@ -36,8 +36,8 @@ const Sidebar: React.FC = () => {
           />
         </button>
 
-        <div className="p-4">
-          <ul className="space-y-2">
+        <div className="p-4 pt-10">
+          <ul className="space-y-4">
             <NavItem href="/" icon={<FiHome />} label="Home" isOpen={isOpen} />
 
             <NavItem
@@ -46,12 +46,6 @@ const Sidebar: React.FC = () => {
               label="Messages"
               isOpen={isOpen}
             />
-            {/* <NavItem
-              href="/dashboard/users"
-              icon={<FiUsers />}
-              label="Users"
-              isOpen={isOpen}
-            /> */}
             <NavItem
               href="/dashboard/projects"
               icon={<GoProjectTemplate />}
@@ -76,10 +70,10 @@ const NavItem: React.FC<NavItemProps> = ({ href, icon, label, isOpen }) => (
   <li>
     <Link
       href={href}
-      className="flex items-center gap-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-all"
+      className="flex items-center gap-4 p-3 rounded-lg dark:hover:bg-gray-700 text-gray-700 dark:text-white hover:bg-gray-100 transition-all duration-200 ease-in-out"
     >
-      <span className="text-lg">{icon}</span>
-      {isOpen && <span className="text-sm font-medium">{label}</span>}
+      <span className="text-xl">{icon}</span>
+      {isOpen && <span className="text-base font-semibold">{label}</span>}
     </Link>
   </li>
 );
