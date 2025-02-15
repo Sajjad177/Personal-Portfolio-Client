@@ -1,10 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut, selectCurrentUser } from "@/redux/features/auth/authSlice";
 import { ThemeToggler } from "./ThemeTogloer";
-
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +13,22 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const isAdmin = currentUser?.role === "admin";
+  const textRef = useRef(null);
+  const navRef = useRef(null);
+
+  // GSAP animaton-------
+  useGSAP(() => {
+    const timeline = gsap.timeline();
+
+    timeline.from(navRef.current, {
+      y: -200,
+      opacity: 0.5,
+      duration: 5,
+      delay: 0.5,
+      stagger: 0.2,
+      ease: "power4.out",
+    });
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -24,7 +41,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white/95 dark:bg-gray-800 sticky top-0 w-full z-50 shadow-sm backdrop-blur-sm border-b border-gray-100 dark:border-gray-700 font-space">
+    <nav
+      ref={navRef}
+      className="bg-white/95 dark:bg-gray-800  top-0 w-full z-50 shadow-sm backdrop-blur-sm border-b border-gray-100 dark:border-gray-700 font-space"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -33,7 +53,10 @@ const Navbar = () => {
               href="/"
               className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent hover:scale-105 transition-transform"
             >
-              Sajjad<span className="text-gray-800 dark:text-white">.dev</span>
+              Sajjad
+              <span ref={textRef} className="text-gray-800 dark:text-white">
+                .dev
+              </span>
             </Link>
           </div>
 
@@ -45,7 +68,7 @@ const Navbar = () => {
                   href="/"
                   className="hover:text-blue-600 dark:hover:text-blue-400"
                 >
-                  Home
+                  <p ref={textRef}>Home</p>
                 </Link>
               </li>
               <li>

@@ -4,9 +4,9 @@ import { ReactNode } from "react";
 
 const MainLayout = ({children} : {children: ReactNode}) => {
     return (
-      <div>
+      <div className="container mx-auto">
         <Navbar />
-        <div className="min-h-screen container mx-auto">{children}</div>
+        <div className="min-h-screen">{children}</div>
         <Footer />
       </div>
     );
