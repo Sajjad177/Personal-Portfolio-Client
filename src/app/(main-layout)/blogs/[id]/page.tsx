@@ -7,11 +7,19 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const BlogDetails = () => {
   const { id } = useParams();
   const { data, isLoading, error } = useGetSingleBlogQuery(id);
   const blogData = data?.data || {};
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
 
   if (isLoading) {
     return (
@@ -39,7 +47,10 @@ const BlogDetails = () => {
     <div className="flex justify-center items-center min-h-screen p-5 font-space">
       <Card className="w-full sm:w-[90%] md:w-[80%] lg:w-[60%] p-6 sm:p-10 rounded-xl shadow-lg bg-white dark:bg-gray-900 transition-transform duration-300 hover:scale-105">
         {/* Blog Image */}
-        <div className="relative w-full h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
+        <div
+          data-aos="fade-up"
+          className="relative w-full h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden shadow-lg"
+        >
           <Image
             src={blogData.image}
             alt={blogData.title}
@@ -52,12 +63,15 @@ const BlogDetails = () => {
         {/* Blog Content */}
         <CardContent className="mt-6 space-y-4">
           {/* Category Badge */}
-          <Badge className="text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full">
+          <Badge
+            data-aos="fade-bottomtop"
+            className="text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full"
+          >
             {blogData.category}
           </Badge>
 
           {/* Blog Title */}
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+          <h1 data-aos="fade-left" className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
             {blogData.title}
           </h1>
 
