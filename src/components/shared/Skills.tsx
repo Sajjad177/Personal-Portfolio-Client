@@ -11,7 +11,7 @@ import {
   SiMongoose,
   SiRedux,
 } from "react-icons/si";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -45,7 +45,6 @@ const Skills = () => {
   const backendRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
-    // Animate the main section header
     gsap.from(headerRef.current, {
       opacity: 0,
       y: 70,
