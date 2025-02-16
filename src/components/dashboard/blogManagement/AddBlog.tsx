@@ -91,7 +91,7 @@ const AddBlog = () => {
               {/* Title Field */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                  Title
+                  Title:
                 </label>
                 <input
                   type="text"
@@ -108,7 +108,7 @@ const AddBlog = () => {
               {/* Content Field */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                  Content
+                  Content:
                 </label>
                 <textarea
                   rows={4}
@@ -124,8 +124,8 @@ const AddBlog = () => {
 
               {/* Category Field */}
               <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Category
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                  Category:
                 </label>
                 <select
                   {...register("category", {
@@ -148,8 +148,8 @@ const AddBlog = () => {
 
               {/* Image Upload */}
               <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Upload Image
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                  Upload Image:
                 </label>
                 <input
                   type="file"

@@ -1,24 +1,14 @@
 import ProjectDataDetails from "@/components/Projects/ProjectDataDetails";
-import { Metadata } from "next";
 
+export const metadata = {
+  title: "Sajjad's Portfolio | Project Details",
+  description: "Welcome to Sajjad's Portfolio",
+};
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { id: string };
-}): Promise<Metadata> {
-  const projectTitle = `Project-${params.id}`;
-
-  return {
-    title: `Sajjad's Portfolio | ${projectTitle}`,
-    description: `Details of ${projectTitle}`,
-  };
-}
-
-const ProjectDetails = ({ params }: { params: { id: string } }) => {
+const ProjectDetails = () => {
   return (
     <div>
-      <ProjectDataDetails id={params.id} />
+      <ProjectDataDetails />
     </div>
   );
 };

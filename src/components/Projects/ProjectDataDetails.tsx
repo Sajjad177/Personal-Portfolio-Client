@@ -11,10 +11,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 
-const ProjectDataDetails = ({ id }: { id: string }) => {
-  //   const { id } = useParams();
-  console.log(id);
-
+const ProjectDataDetails = () => {
+  const { id } = useParams();
   const { data } = useGetSingleProjectQuery(id);
   const projectData = data?.data || {};
 
@@ -34,7 +32,7 @@ const ProjectDataDetails = ({ id }: { id: string }) => {
           <Card className="rounded-xl overflow-hidden ">
             <div
               data-aos="fade-right"
-              className="relative w-full h-64 md:h-80 lg:h-96"
+              className="relative w-full h-56 sm:h-64 md:h-80 lg:h-full"
             >
               {imageUrl ? (
                 <Image
@@ -42,6 +40,7 @@ const ProjectDataDetails = ({ id }: { id: string }) => {
                   alt={projectData.title}
                   layout="fill"
                   objectFit="cover"
+                  
                   className="rounded-lg transition-transform duration-500 hover:scale-105"
                 />
               ) : (

@@ -1,23 +1,14 @@
 import BlogDataDetails from "@/components/Blogs/BlogDataDetails";
-import { Metadata } from "next";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { id: string };
-}): Promise<Metadata> {
-  const blogTitle = `Blog-${params.id}`;
-
-  return {
-    title: `Sajjad's Portfolio | ${blogTitle}`,
-    description: `Details of ${blogTitle}`,
-  };
+export const metadata = {
+  title: "Sajjad's Portfolio | Blog Details",
+  description: "Welcome to Sajjad's Portfolio",
 }
 
-const BlogDetails = ({ params }: { params: { id: string } }) => {
+const BlogDetails = () => {
   return (
     <div>
-      <BlogDataDetails id={params.id} />
+      <BlogDataDetails />
     </div>
   );
 };

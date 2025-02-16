@@ -11,8 +11,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 
-const BlogDataDetails = ( { id }: { id: string }) => {
-//   const { id } = useParams();
+const BlogDataDetails = () => {
+  const { id } = useParams();
   const { data, isLoading, error } = useGetSingleBlogQuery(id);
   const blogData = data?.data || {};
 
