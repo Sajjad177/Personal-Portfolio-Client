@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
 import { Download } from "lucide-react";
-import "../style/button.css";
 import profile from "../../../public/Images/profile.jpg";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CustomButton from "./button/Button";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,7 +69,7 @@ const Banner = () => {
     gsap.from(paraRef.current, {
       opacity: 0,
       y: 50,
-      delay:2,
+      delay: 2,
       duration: 1,
       ease: "power3.out",
       filter: "blur(5px)",
@@ -121,14 +121,16 @@ const Banner = () => {
 
               <div className="w-44">
                 <a
-                  href="https://drive.google.com/file/d/1T1RnKpbQ-9OAiDDkQ4irj3Hq_SsbDOd-/view"
+                  href="https://drive.google.com/file/d/1jfRs2Cx7483JQzvOFr1ENTWlpErY6wKG/view?usp=sharing"
                   download="My_Resume.pdf"
                   className="btn flex items-center gap-5 cursor-pointer"
                 >
-                  <button className="flex items-center gap-5">
-                    Resume
-                    <Download className="text-[#14f5a3] text-xl animate-bounce" />
-                  </button>
+                  <div className="flex items-center gap-5">
+                    <CustomButton>
+                      Resume{" "}
+                      <Download className="text-[#14f5a3] text-xl animate-bounce" />
+                    </CustomButton>
+                  </div>
                 </a>
               </div>
             </div>

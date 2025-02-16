@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import CustomButton from "@/components/shared/button/Button";
 
 const Project = () => {
   const { data, isLoading } = useGetAllProjectsQuery(undefined);
@@ -42,9 +43,7 @@ const Project = () => {
       </div>
       <div data-aos="fade-up" className="flex justify-center mt-10">
         <Link href="/projects">
-          <Button className="px-6 py-3 bg-blue-600 text-white font-medium text-lg rounded-lg hover:bg-blue-700 transition duration-300 font-space">
-            view All
-          </Button>
+          <CustomButton>View All</CustomButton>
         </Link>
       </div>
     </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import CustomButton from "./button/Button";
 
 interface BlogProps {
   blog: {
@@ -46,8 +47,11 @@ const BlogCard: React.FC<BlogProps> = ({ blog }) => {
         </p>
 
         {/* Read More Button */}
-        <Link href={`/blogs/${blog._id}`} passHref>
-          <Button variant="default" className="mt-4 w-full bg-blue-600 hover:bg-blue-700">
+        <Link href={`/blogs/${blog._id}`} passHref className="pt-10">
+          <Button
+            variant="default"
+            className="mt-4 w-full bg-blue-600 hover:bg-blue-700"
+          >
             Read More
           </Button>
         </Link>

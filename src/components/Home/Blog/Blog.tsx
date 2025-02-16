@@ -7,7 +7,7 @@ import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-
+import CustomeButton from "@/components/shared/button/Button";
 const Blog = () => {
   const { data } = useGetAllBlogsQuery(undefined);
   const blogData = data?.data || [];
@@ -38,9 +38,7 @@ const Blog = () => {
       </div>
       <div data-aos="fade-up delay-300" className="flex justify-center mt-10">
         <Link href="/blogs">
-          <Button className="px-6 py-3 bg-blue-600 text-white font-medium text-lg rounded-lg hover:bg-blue-700 transition duration-300 font-space">
-            view All
-          </Button>
+          <CustomeButton>View All </CustomeButton>
         </Link>
       </div>
     </div>

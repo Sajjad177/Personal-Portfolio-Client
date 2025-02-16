@@ -1,4 +1,5 @@
 import ViewMessage from "@/components/dashboard/ManageMessage/ViewMessage";
+import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute";
 
 export const metadata = {
   title: "Sajjad's Portfolio | Message",
@@ -8,7 +9,9 @@ export const metadata = {
 const MessagePage = () => {
   return (
     <div className="min-h-screen">
-      <ViewMessage />
+      <ProtectedRoute allowedRoles={["admin"]}>
+        <ViewMessage />
+      </ProtectedRoute>
     </div>
   );
 };
