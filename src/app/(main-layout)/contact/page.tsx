@@ -18,6 +18,9 @@ import {
 } from "react-icons/fa";
 import { IoMdHome } from "react-icons/io";
 import { IoMail } from "react-icons/io5";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 export type FormValues = {
   name: string;
@@ -36,6 +39,10 @@ const ContactPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   const onSubmit = async (data: FormValues) => {
     try {
@@ -56,12 +63,12 @@ const ContactPage = () => {
   return (
     <div className="flex flex-col-reverse lg:flex-row justify-center items-center gap-20 min-h-screen px-6 py-10   font-space">
       {/* Left Section */}
-      <div className="text-center lg:text-left space-y-4">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+      <div data-aos="fade-right" className="text-center lg:text-left space-y-4">
+        <h1  className="text-4xl font-bold text-gray-900 dark:text-white">
           Contact Us
         </h1>
         <div className="space-y-2">
-          <div className="text-gray-700 dark:text-gray-300 flex items-center gap-2">
+          <div  className="text-gray-700 dark:text-gray-300 flex items-center gap-2">
             <IoMdHome className="text-2xl " />
             <span>Fulbari, Shariyakandi, Bogura</span>
           </div>
@@ -105,7 +112,7 @@ const ContactPage = () => {
       </div>
 
       {/* Right Section (Contact Form) */}
-      <Card className="w-full max-w-lg shadow-lg border rounded-lg p-6 bg-white dark:bg-gray-800 dark:border-gray-700">
+      <Card data-aos="fade-left" className="w-full max-w-lg shadow-lg border rounded-lg p-6 bg-white dark:bg-gray-800 dark:border-gray-700">
         <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">
           Get In Touch
         </h2>

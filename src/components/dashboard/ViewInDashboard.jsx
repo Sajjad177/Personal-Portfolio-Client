@@ -3,6 +3,9 @@
 import { useGetAllBlogsQuery } from "@/redux/features/blogs/blogManagement";
 import { useGetAllMessagesQuery } from "@/redux/features/message/messageManagement";
 import { useGetAllProjectsQuery } from "@/redux/features/projects/projectsManagement";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const ViewInDashboard = () => {
   const { data } = useGetAllBlogsQuery(undefined);
@@ -11,6 +14,10 @@ const ViewInDashboard = () => {
   const projectData = project?.data || [];
   const { data: message } = useGetAllMessagesQuery(undefined);
   const userData = message?.data || [];
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   const progressData = [
     {
@@ -40,7 +47,7 @@ const ViewInDashboard = () => {
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
           Progress
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-4">
+        <div data-aos="fade-down" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-4">
           {progressData.map((item, index) => (
             <div
               key={index}

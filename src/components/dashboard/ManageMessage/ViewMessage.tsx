@@ -6,6 +6,11 @@ import {
 } from "@/redux/features/message/messageManagement";
 import { FiTrash } from "react-icons/fi";
 import { toast } from "sonner";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+
+
 
 const ViewMessage = () => {
   const { data } = useGetAllMessagesQuery([]);
@@ -22,8 +27,12 @@ const ViewMessage = () => {
     }
   };
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 font-space">
+    <div data-aos="fade-right" className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 font-space">
       {messages.length > 0 ? (
         messages.map((message: any, index: number) => (
           <div
