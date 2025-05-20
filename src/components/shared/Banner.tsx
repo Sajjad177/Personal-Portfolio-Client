@@ -92,58 +92,65 @@ const Banner = () => {
 
   return (
     <div>
-      <div className="relative font-space">
-        <div className="lg:px-8 mt-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+      <div className="w-full py-16 lg:py-24 font-space">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Column */}
             <div className="flex flex-col justify-center">
-              <p ref={textRefOne} className="text-lg mb-4">
+              <p
+                ref={textRefOne}
+                className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-3"
+              >
                 Full Stack Web Developer
               </p>
+
               <h1
                 ref={textRefTwo}
-                className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-2"
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-1"
               >
                 {"I'm"}
               </h1>
+
               <h2
                 ref={nameRef}
-                className="text-5xl sm:text-6xl dark:text-white lg:text-6xl font-bold leading-tight text-transparent [-webkit-text-stroke:1px_black] mb-4"
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-transparent dark:text-white [-webkit-text-stroke:1px_black] mb-4"
               >
-                {/* GSAP will update this dynamically */}
+                {/* GSAP will populate */}
               </h2>
-              <p ref={paraRef} className="text-lg mb-8">
+
+              <p
+                ref={paraRef}
+                className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-6 max-w-xl"
+              >
                 Creating appealing and responsive websites, optimizing
                 performance, and ensuring the website meets client needs and
                 industry standards. I quickly identify and solve problems to
                 ensure seamless and efficient website performance.
               </p>
 
-              <div className="w-44">
+              <div className="w-fit">
                 <a
                   href="https://drive.google.com/file/d/1jfRs2Cx7483JQzvOFr1ENTWlpErY6wKG/view?usp=sharing"
                   download="My_Resume.pdf"
-                  className="btn flex items-center gap-5 cursor-pointer"
+                  className="inline-flex items-center gap-3"
                 >
-                  <div className="flex items-center gap-5">
-                    <CustomButton>
-                      Resume{" "}
-                      <Download className="text-[#14f5a3] text-xl animate-bounce" />
-                    </CustomButton>
-                  </div>
+                  <CustomButton>
+                    Resume{" "}
+                    <Download className="text-[#14f5a3] animate-bounce" />
+                  </CustomButton>
                 </a>
               </div>
             </div>
 
             {/* Right Column */}
-            <div className="relative">
+            <div className="flex justify-center lg:justify-end">
               <Image
                 ref={imageRef}
                 src={profile}
-                alt="profile"
+                alt="Sajjad Hossain Profile"
                 width={500}
-                height={200}
-                className="object-cover object-center rounded-b-full rounded-r-xl"
+                height={500}
+                className="rounded-b-full rounded-r-xl shadow-xl object-cover"
                 priority
               />
             </div>
@@ -154,4 +161,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default Banner;  

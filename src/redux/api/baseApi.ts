@@ -10,7 +10,8 @@ import { RootState } from "../store";
 import { toast } from "sonner";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://my-portfolio-website-zeta-one.vercel.app/api",
+  baseUrl: "http://localhost:5000/api",
+  // baseUrl: "https://my-portfolio-website-zeta-one.vercel.app/api",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;

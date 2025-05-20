@@ -1,7 +1,14 @@
 "use client";
 
 import SkillCard from "./SkillCard";
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs } from "react-icons/fa";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+  FaNodeJs,
+  FaDatabase,
+} from "react-icons/fa";
 import {
   SiNextdotjs,
   SiTailwindcss,
@@ -10,6 +17,8 @@ import {
   SiTypescript,
   SiMongoose,
   SiRedux,
+  SiPrisma,
+  SiPostgresql,
 } from "react-icons/si";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
@@ -24,7 +33,7 @@ const frontendSkills = [
   { name: "JavaScript", Icon: FaJs, color: "text-yellow-500" },
   { name: "TypeScript", Icon: SiTypescript, color: "text-blue-600" },
   { name: "React.js", Icon: FaReact, color: "text-cyan-500" },
-  { name: "Next.js", Icon: SiNextdotjs, color: "text-black" },
+  { name: "Next.js", Icon: SiNextdotjs, color: "text-black dark:text-white" },
   { name: "Tailwind CSS", Icon: SiTailwindcss, color: "text-teal-500" },
 ];
 
@@ -33,7 +42,10 @@ const backendSkills = [
   { name: "Express.js", Icon: SiExpress, color: "text-gray-500" },
   { name: "MongoDB", Icon: SiMongodb, color: "text-green-500" },
   { name: "Mongoose", Icon: SiMongoose, color: "text-gray-500" },
-  { name: "Redux", Icon: SiRedux, color: "text-pink-600" },
+  { name: "Redux Toolkit", Icon: SiRedux, color: "text-purple-500" },
+  { name: "Prisma ORM", Icon: SiPrisma, color: "text-indigo-600" },
+  { name: "PostgreSQL", Icon: SiPostgresql, color: "text-blue-800" },
+  { name: "SQL", Icon: FaDatabase, color: "text-slate-600" },
 ];
 
 const Skills = () => {
@@ -45,72 +57,87 @@ const Skills = () => {
   const backendRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
-    gsap.from(headerRef.current, {
+    const header = headerRef.current;
+    const frontendHeader = frontendHeaderRef.current;
+    const backendHeader = backendHeaderRef.current;
+    const container = containerRef.current;
+    const frontend = frontendRef.current;
+    const backend = backendRef.current;
+
+    if (
+      !header ||
+      !frontendHeader ||
+      !backendHeader ||
+      !container ||
+      !frontend ||
+      !backend
+    ) {
+      return;
+    }
+
+    // Animate header
+    gsap.from(header, {
       opacity: 0,
       y: 70,
       duration: 1,
       ease: "power4.out",
       scrollTrigger: {
-        trigger: headerRef.current,
+        trigger: header,
         start: "top 70%",
-        // markers: true,
-        toggleActions: "play none none reverse",
         scrub: 2,
+        toggleActions: "play none none reverse",
       },
     });
 
-    // Animate Frontend & Backend Headers
-    gsap.from([frontendHeaderRef.current, backendHeaderRef.current], {
+    // Animate section headers
+    gsap.from([frontendHeader, backendHeader], {
       opacity: 0,
       x: -50,
       duration: 1,
       ease: "power4.out",
       scrollTrigger: {
-        trigger: containerRef.current,
+        trigger: container,
         start: "top 40%",
-        // markers: true,
         scrub: 2,
         toggleActions: "play none none reverse",
       },
     });
 
-    // Animate Skill Cards
-    if (frontendRef.current) {
-      gsap.from([...frontendRef.current.children], {
-        opacity: 0,
-        y: 50,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: frontendRef.current,
-          start: "top 40%",
-          scrub: 3,
-          toggleActions: "play none none reverse",
-        },
-      });
-    }
+    // Animate frontend skill cards
+    gsap.from([...frontend.children], {
+      opacity: 0,
+      y: 50,
+      stagger: 0.15,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: frontend,
+        start: "top 40%",
+        scrub: 3,
+        toggleActions: "play none none reverse",
+      },
+    });
 
-    if (backendRef.current) {
-      gsap.from([...backendRef.current.children], {
-        opacity: 0,
-        y: 50,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: backendRef.current,
-          start: "top 60%",
-          scrub: 3,
-          toggleActions: "play none none reverse",
-        },
-      });
-    }
+    // Animate backend skill cards
+    gsap.from([...backend.children], {
+      opacity: 0,
+      y: 50,
+      stagger: 0.15,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: backend,
+        start: "top 60%",
+        scrub: 3,
+        toggleActions: "play none none reverse",
+      },
+    });
   }, []);
+  
+  
 
   return (
     <div>
       <section ref={containerRef} className="py-16 font-space">
         <div className="container mx-auto px-4">
-          {/* Main Section Header */}
           <h2
             ref={headerRef}
             className="text-3xl font-bold text-center mb-12 dark:text-white text-gray-800"
@@ -118,7 +145,6 @@ const Skills = () => {
             My Skills
           </h2>
 
-          {/* Frontend Skills */}
           <h3
             ref={frontendHeaderRef}
             className="text-2xl font-semibold dark:text-white text-gray-700 pt-10 mb-4"
@@ -134,7 +160,6 @@ const Skills = () => {
             ))}
           </div>
 
-          {/* Backend Skills */}
           <h3
             ref={backendHeaderRef}
             className="text-2xl font-semibold dark:text-white text-gray-700 mb-4"
