@@ -8,6 +8,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import CustomButton from "@/components/shared/button/Button";
+import Loading from "@/components/shared/Loading";
 
 const Project = () => {
   const { data, isLoading } = useGetAllProjectsQuery(undefined);
@@ -17,7 +18,12 @@ const Project = () => {
     AOS.init();
   }, []);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center min-h-screen p-5">
+        <Loading />
+      </div>
+    );
 
   return (
     <div>
